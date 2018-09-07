@@ -12,12 +12,10 @@ import { put, takeLatest} from 'redux-saga/effects';
 import {Api} from './Api';
 
 function* fetchMovies(){
-    console.log(" fetchMovies saga ")
     try {
         const receivedMovies = yield Api.getMoviesFromApi();
         yield put({type : FETCH_SUCCEEDED, receivedMovies : receivedMovies});
     } catch (error) {
-        console.log(" error fetchMovies  " + error );
         yield put({type : FETCH_FAILED, error});
     }
 }
@@ -27,12 +25,6 @@ function* fetchMovies(){
 }
 
 
-// export function* watchFetchMovies(){
-//     console.log(" watchFetchMovies ")
-//     yield takeLatest(FETCH_MOVIES, fetchMovies);
-// }
-
 export function* watchFetchMovies(){
-    console.log(" watchFetchMovies ")
     yield takeLatest(FETCH_MOVIES, fetchMovies);
 }

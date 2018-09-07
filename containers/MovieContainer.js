@@ -11,7 +11,6 @@ import MovieComponent from '../components/MovieComponent';
 import { addMovieAction, fetchMoviesAction, fetchSuccessAction, fetchFailedAction} from '../actions/index'  
 
 const mapStateToProps = (state) => {
-    console.log("mapStateToProps " + JSON.stringify(state));
     return {
         movies: state.movieReducers
     }
@@ -20,7 +19,6 @@ const mapStateToProps = (state) => {
  const mapDispatchToProps = (dispatch) => {
     return {
          onFetchMovie : () =>{
-             console.log(" onFetchMovie called");
              dispatch(fetchMoviesAction());
          },
          onAddMovie : () => {

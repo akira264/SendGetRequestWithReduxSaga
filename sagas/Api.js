@@ -5,23 +5,21 @@ Email: sunlight4d@gmail.com
 Send GET / POST api requests to server
 */
 
-const urlGetMovies = 'http://localhost:3000/movies';
+const urlGetMovies = 'http://10.10.48.82:3000/movies';
 
-function* getMoviesFromApi(){
-    console.log("  getMoviesFromApi  ")
-    const response = yield fetch(urlGetMovies,{
-        method : 'GET',
-        header :{
+function* getMoviesFromApi() {
+    const response = yield fetch(urlGetMovies, {
+        method: 'GET',
+        headers: {
             Accept: 'application/json',
-            'Content-Type' : 'application/json',
+            'Content-Type': 'application/json',
         },
-        body : '',
+        body: '',
     });
-
-    const movies = yield response.status === 200 ? JSON.parse(response._bodyInit) : []
+    
+    const movies = yield response.status === 200 ? response.json(): []  
     return movies;
 }
-
 export const Api = {
     getMoviesFromApi
-};
+}; 

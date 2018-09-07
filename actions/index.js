@@ -7,7 +7,6 @@ Redux in React Native - Action Creators
 import { ADD_MOVIE, FETCH_MOVIES, FETCH_SUCCEEDED, FETCH_FAILED } from './actionTypes';
 
 export const fetchMoviesAction = (sort) => {
-    console.log( " fetchMoviesAction dispatched ");
     return {
         type: FETCH_MOVIES,
         sort
