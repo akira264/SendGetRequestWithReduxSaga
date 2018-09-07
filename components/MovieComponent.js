@@ -14,7 +14,7 @@ import {
 class MovieComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+        this.state = { movieName: '', releaseYear: '' };
     }
     render() {
         return (
@@ -34,6 +34,7 @@ class MovieComponent extends Component {
                     <TextInput style={{ flex: 1, margin: 5, padding: 10, borderColor: 'gray', borderWidth: 1, width: 120 }}
                         onChangeText={(text) => this.setState({ releaseYear: text })}
                         value={this.state.releaseYear}
+                        keyboardType = 'numeric'
                         placeholder='Release year'
                     />
                 </View>
@@ -50,7 +51,13 @@ class MovieComponent extends Component {
                         containerStyle={{ padding: 10, margin: 10, width: 150, height: 45, borderRadius: 10, backgroundColor: 'darkviolet' }}
                         style={{ fontSize: 18, color: 'white' }}
                         onPress={() => {
-
+                            console.log('button add movie clicked ' + JSON.stringify(this.state));
+                            const {movieName, releaseYear} = this.state;
+                            if(!movieName.length || !releaseYear.length){
+                                alert('You must enter moive name and release Year')
+                                return;
+                            }
+                            this.props.onAddMovie({name : movieName, releaseYear : releaseYear})
                         }}>
                         Add Movie
                     </Button>

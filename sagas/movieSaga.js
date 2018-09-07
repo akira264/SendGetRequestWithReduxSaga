@@ -5,7 +5,7 @@ Email: sunlight4d@gmail.com
 Create some sagas for FETCH_MOVIES, FETCH_SUCCEEDED, FETCH_FAILED
 */
 
-import { FETCH_MOVIES, FETCH_SUCCEEDED, FETCH_FAILED} from '../actions/actionTypes';
+import { FETCH_MOVIES, FETCH_SUCCEEDED, FETCH_FAILED, ADD_MOVIE} from '../actions/actionTypes';
 
 //Saga effects
 import { put, takeLatest} from 'redux-saga/effects';
@@ -27,4 +27,20 @@ function* fetchMovies(){
 
 export function* watchFetchMovies(){
     yield takeLatest(FETCH_MOVIES, fetchMovies);
+}
+
+// Add new movie
+function* addNewMovie(action){
+    try {
+        const result = yield Api.insertNewMovieFromApi(action.newMovie);
+        if(result === true){
+            yield put({type : FETCH_MOVIES});
+        }
+    } catch (error) {
+        console.log('Function saga addNewMovie error ' + error);
+    }
+}
+
+export function* watchAddNewMovie(){
+    yield takeLatest(ADD_MOVIE, addNewMovie);
 }

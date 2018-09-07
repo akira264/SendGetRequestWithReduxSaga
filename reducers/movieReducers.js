@@ -12,11 +12,11 @@ const movieReducers = (movies = [], action) => {
             return action.receivedMovies;
         case FETCH_FAILED:
             return [];
-        case ADD_MOVIE:
-            return [
-                ...movies,
-                action.newMovie
-            ];
+        // case ADD_MOVIE:
+        //     return [
+        //         ...movies,
+        //         action.newMovie
+        //     ];
         default:
             return movies; //state does not change
     }
