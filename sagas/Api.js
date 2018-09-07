@@ -17,6 +17,7 @@ function* getMoviesFromApi(){
         },
         body : '',
     });
+
     const movies = yield response.status === 200 ? JSON.parse(response._bodyInit) : []
     return movies;
 }

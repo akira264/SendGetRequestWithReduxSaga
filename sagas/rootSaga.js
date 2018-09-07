@@ -8,6 +8,10 @@ import { call, all} from 'redux-saga/effects';
 import { watchFetchMovies } from './movieSaga';
 
 export default function* rootSaga(){
-    console.log("rootSaga ")
-    yield call(watchFetchMovies);
+    try{
+        console.log("rootSaga ")
+        yield call(watchFetchMovies);
+    }catch(err){
+        console.log(err)
+    }
 }

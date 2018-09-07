@@ -24,7 +24,7 @@ export default class App extends React.Component {
 }
 
 sagaMiddleware.run(rootSaga);
-
+console.log(sagaMiddleware.toString());
 const styles = StyleSheet.create({
   container: {
     flex: 1,
